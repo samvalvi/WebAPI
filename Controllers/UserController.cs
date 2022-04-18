@@ -84,5 +84,26 @@ namespace WebAPI.Controllers
 
             return Ok("User updated");
         }
+
+        [HttpDelete]
+        [Route("/delete/user/{id:guid}")]
+        [Authorize]
+        public async Task<IActionResult> DeleteUserAync(Guid id)
+        {
+            var exist = await this._userRepository.GetUserAsync(id);
+            if (exist == null)
+            {
+                return NotFound("User doesn't exist");
+            }
+
+            var user = this._mapper.Map<User>(exist);
+            var result = await this._userRepository.DeleteUserAsync(user);
+            if (!result)
+            {
+                return BadRequest("User can't be deleted");
+            }
+
+            return Ok("User deleted");
+        }
     }
 }
