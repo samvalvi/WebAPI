@@ -13,9 +13,10 @@ namespace WebAPI.Repository
             this._db = db;
         }
         
-        public Task<bool> AuthenticationAsync(string username, string password)
+        public async Task<User> AuthenticationAsync(string username, string password)
         {
-            throw new NotImplementedException();
+            var exist = await this._db!.Users!.Where(u => u.Username == username && u.Password == password).FirstAsync();
+            return exist;
         }
         
         public async Task<bool> AddUserAsync(User user)

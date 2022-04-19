@@ -23,6 +23,7 @@ builder.Services.AddScoped<IWalkRepository, WalkRepository>();
 builder.Services.AddScoped<IWalkDifficultyRepository, WalkDifficultyRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<ITokenHandler, WebAPI.Repository.TokenHandler>();
 
 //AutoMapper Dependecy Injection
 builder.Services.AddAutoMapper(typeof(Program).Assembly);

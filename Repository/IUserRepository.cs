@@ -4,7 +4,7 @@ namespace WebAPI.Repository
 {
     public interface IUserRepository
     {
-        Task<bool> AuthenticationAsync(string username, string password);
+        Task<User> AuthenticationAsync(string username, string password);
         Task<IEnumerable<User>> GetAllUsersAsync();
         Task<User> GetUserAsync(Guid id);
         Task<bool> AddUserAsync(User user);
