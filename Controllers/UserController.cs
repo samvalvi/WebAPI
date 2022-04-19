@@ -96,8 +96,7 @@ namespace WebAPI.Controllers
                 return NotFound("User doesn't exist");
             }
 
-            var user = this._mapper.Map<User>(exist);
-            var result = await this._userRepository.DeleteUserAsync(user);
+            var result = await this._userRepository.DeleteUserAsync(exist);
             if (!result)
             {
                 return BadRequest("User can't be deleted");

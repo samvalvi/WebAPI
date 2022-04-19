@@ -101,10 +101,8 @@ namespace WebAPI.Controllers
             {
                 return NotFound("WalkDifficulty not found");
             }
-
-            var walkDifficultyToDelete = this._mapper.Map<WalkDifficulty>(exist);
-
-            var result = await this._walkDifficultyRepository.DeleteAsync(walkDifficultyToDelete);
+            
+            var result = await this._walkDifficultyRepository.DeleteAsync(exist);
             if(!result)
             {
                 return BadRequest("WalkDifficulty cannot be deleted");
